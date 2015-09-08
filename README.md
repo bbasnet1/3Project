@@ -16,7 +16,7 @@ Villela, Daniel
 Github usernames of members:
 Mark - 
 Bishnu - 
-Connor - 
+Connor - cgolobic
 Dayton - 
 Nhashon - 
 Balaji - balaji2591
