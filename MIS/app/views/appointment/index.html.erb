@@ -1,0 +1,24 @@
+<h1>Appointment#index: <%= @headertext %></h1>
+<p>Find me in app/views/appointment/index.html.erb</p>
+<table>
+    <thead>
+		<th>ID</th>
+        <th>Patient</th>
+        <th>Doctor</th>
+		<th>Date</th>
+    </thead>
+    <tbody>
+<% @appointments.each do |appointment| %>
+    <tr>
+		<td><%= appointment.id %></td>
+        <td><%= appointment.patient_id %></td>
+        <td><%= appointment.doctor_id %></td>
+        <td><%= appointment.date_time %></td>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<% if @valid == true %>
+<a href="/appointment/create">Add Appointment</a>
+<% end %>
+<a href= "<%= @main_route %>">Back</a>

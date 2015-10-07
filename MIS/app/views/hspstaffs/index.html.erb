@@ -1,0 +1,26 @@
+<h1>Hspstaffs#index</h1>
+<p>Find me in app/views/hspstaffs/index.html.erb</p>
+<table>
+    <thead>
+		<th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
+    <tbody>
+<% @hspstaffs.each do |hspstaff| %>
+    <tr>
+		<td><%= hspstaff.id %></td>
+        <td><%= hspstaff.name_first %></td>
+        <td><%= hspstaff.name_last%></td>
+        <% if @valid == true %>
+        <td><%= link_to "Delete", {:controller => "hspstaffs", :action => "delete", :id => hspstaff.id} %></td>
+        <td><%= link_to "Edit", {:controller => "hspstaffs", :action => "edit", :id => hspstaff.id} %></td>
+        <% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<% if @valid == true %>
+<a href="/hspstaffs/register">Add HSP Staff</a>
+<% end %>
+<a href= "<%= @main_route %>">Back</a>

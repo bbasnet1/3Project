@@ -1,0 +1,26 @@
+<h1>Admin#pharmacist_index</h1>
+<p>Find me in app/views/admin/pharmacist_index.html.erb</p>
+<table>
+    <thead>
+		<th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
+    <tbody>
+<% @pharmacists.each do |pharmacist| %>
+    <tr>
+		<td><%= pharmacist.id %></td>
+        <td><%= pharmacist.name_first %></td>
+        <td><%= pharmacist.name_last%></td>
+        <% if @valid == true %>
+        <td><%= link_to "Delete", {:controller => "pharmacist", :action => "delete", :id => pharmacist.id} %></td>
+        <td><%= link_to "Edit", {:controller => "pharmacist", :action => "edit", :id => pharmacist.id} %></td>
+        <% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<% if @valid == true %>
+<a href="/pharmacist/register">Add Pharmacist</a>
+<% end %>
+<a href= "<%= @main_route %>">Back</a>
