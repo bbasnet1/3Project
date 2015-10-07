@@ -1,0 +1,44 @@
+<h1>Patients#index</h1>
+<p>Find me in app/views/admin/patient_index.html.erb</p>
+<table>
+    <thead>
+		<th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+		<th>Gender</th>
+		<th>Social Security Number</th>
+        <th>Address</th>
+        <th>Phone</th>
+		<th>Date of Birth</th>
+        <th>Weight</th>
+		<th>Height</th>
+		<% if @valid == true %>
+		<th></th>
+        <th></th>
+		<% end %>
+    </thead>
+    <tbody>
+<% @patients.each do |patient| %>
+    <tr>
+		<td><%= patient.id %></td>
+        <td><%= patient.name_first %></td>
+        <td><%= patient.name_last%></td>
+		<td><%= patient.gender%></td>
+		<td><%= patient.ssn %></td>
+        <td><%= patient.address %></td>
+        <td><%= patient.phone%></td>
+		<td><%= patient.dob%></td>
+        <td><%= patient.weight%></td>
+		<td><%= patient.height%></td>
+		<% if @valid == true %>
+        <td><%= link_to "Delete", {:controller => "patients", :action => "delete", :id => patient.id} %></td>
+        <td><%= link_to "Edit", {:controller => "patients", :action => "edit", :id => patient.id} %></td>
+		<% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<% if @valid == true %>
+<a href="/patients/register?patient_id=<%= params[:patient_id] %>">Add Patient</a>
+<% end %>
+<a href= "<%= @main_route %>">Back</a>

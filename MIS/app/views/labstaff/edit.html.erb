@@ -1,0 +1,7 @@
+<h1>labstaff#edit</h1>
+<p>Find me in app/views/labstaff/edit.html.erb</p>
+<%= form_tag(:action => 'edit_submit', :id => @editLab[:id]) do %>
+<p>First Name:</br><%= text_field_tag :first_name, @editLab[:name_first] %></p>
+<p>Last Name:</br><%= text_field_tag :last_name, @editLab[:name_last] %></p>
+<%= submit_tag("Save Changes")%>
+<% end %>

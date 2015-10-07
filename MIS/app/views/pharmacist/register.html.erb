@@ -1,0 +1,7 @@
+<h1>pharmacist#register</h1>
+<p>Find me in app/views/pharmacist/register.html.erb</p>
+<%= form_tag(:action => 'register_submit') do %>
+<p>First Name:</br><%= text_field_tag(:first_name) %></p>
+<p>Last Name:</br><%= text_field_tag(:last_name) %></p>
+<%= submit_tag("Register")%>
+<% end %>
