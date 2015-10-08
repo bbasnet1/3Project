@@ -1,0 +1,47 @@
+1. INTRODUCTION
+The Medical Information System (MIS) is a Ruby on Rails web app that provides access to and manages a SQLite database.  the entire Rails project is contained within the "MIS" folder.
+
+
+2. RUNNING THE SERVER
+First, be sure to have Ruby, Rails, and SQLite installed.  To test the MIS locally, a server running the web app needs to be started locally.  This is done by opening a terminal/command prompt in the "MIS" directory.  Then, run the command:
+
+rails server
+
+to start the local server on port 3000.  To access the web app, open a web browser and navigate to the URL:
+
+http://localhost:3000/
+
+
+3. USING THE SYSTEM
+From the homepage, you can click a login link to be taken to a login page for a certain user type.  Or, you can click the Administrato login link.  You will be taken to an administrator login page asking for a username and password.  Just click "Log In", you DO NOT need to enter a username and password.  This makes it less annoying to sign in as an administrator, since you don't need to enter credentials every time you want to check or modify something in the system.
+
+4. ADMINISTRATOR
+As an administrator, you can view, edit, and delete entries in all the tables of the MIS database.  For now, you can only view, edit, or delete entries in the databases corresponding to actors (Patients, Doctors, Nurses, HSP staff, Lab staff, and Pharmacists).  In the future, administators can also modify the Prescription, Appointment, Medical Condition, Medical History, and Labwork database tables.
+
+5. SIGN IN AS A NON-ADMINISTRATOR USER
+To sign in as a Patient, Doctor, Nurse, HSP staff, Lab staff, or Pharmacist, click the proper link on the main welcome page.  You will be taken to a login page asking for a Username.  A username is the capital first initial of a user's first name, the capital initials of the user's last name, and the ID of the patient in the table their information is stored in.  This information can be obtained by loggin in as an administrator and viewing the user index.
+
+For example, I want to log in as a patient.  First, I sign in as an administrator and click "View Patients".  I am presented with a list of all the Patients registerd with the system.  I decide to sign in as the user "Mary Hansen".  I see that this patient has an ID of 2 (the ID is shown in the first column of the table).  So, the username that I would use to login as "Mary Hansen" would be "MH2".  I go back to the main welcome page and click the "Patient Login" link.  Then, I enter "MH2" (without quotes) as the username.  The system checks if this is a valid login.  It is, and it retrieves the data for the patient "Mary Hansen" from the database.  Now, I am logged into the MIS as the patient user "Mary Hansen".
+
+5. OVERVIEW OF PROJECT FILE STRUCTURE
+Open the "MIS" folder, then open the "app" folder.  Inside of the "app" folder are 2 folders that we care about: the "controllers" and "views" folders.
+
+
+	5.1: CONTROLLERS:
+	Controllers are kind of like classes in Java or C#.  Inside a controller, you define "actions" that can be called.  THe "actions" are like methods in Java or C#.  So, like a C#/Java CLASS contains METHODS, a Rails CONTROLLER contains ACTIONS. To call an action on a specific controller, Rails uses URLs.  Consider the following:
+
+	C#/JAVA:  MyClass.MyMethod();      <--Code that calls the "myMethod" method of the "myClass" class
+	RAILS:	  /myController/myAction   <--URL that calls the "myAction" action of the "myController" controller
+
+	You can send a URL to call an action of a controller, as above.  This is useful if you want to call an action with a link that redirects to a specific URL defined in HTML (in a View).  If you want to go to another action from within a controller, use the following syntax:
+
+	redirect_to :controller => 'myController', :action => 'myAction'
+
+	This will generate the same "/myController/myAction" URL we first introduced, and automatically redirect the browser to that URL, all from within the contoller itself.  
+
+	5.2 VIEWS:
+	Views are written in HTML, and they define what the browser should render when a particular action is called.  Fow example, the Patient has a login action (defined in controllers/patients_contoller.rb) and a view associated with the login action (defined in views/patients/login.html.erb).  When the Patient's login action is called, Rails looks for a view called login in the views/patients folder.  It finds it, and renders the login view in the browser window.  As you can see, ACTIONS AND VIEWS ARE ASSOCIATED BY NAME.  If you have an action called "myAction" and you want to render a view when "myAction" called, you need to call your view "myAction" as well.
+
+***Controllers MUST go in the "MIS/app/controllers/" folder***
+
+***Views MUST go in the "MIS/app/views/<name_of_controller>/" folder, where <name_of_controller> is the name of the controller that defines the action you are writing a view for***

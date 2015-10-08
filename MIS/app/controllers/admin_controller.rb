@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   def login_submit
       p params[:username]
 	  p params[:password]
-	  if authenticate(params[:username], params[:password]) == true
+	  #if authenticate(params[:username], params[:password]) == true
 		p "ADMIN LOGIN SUCCESS"
 	    session[:firstname] = "GROUP3"
 		session[:lastname] = "ADMIN"
@@ -19,9 +19,9 @@ class AdminController < ApplicationController
 	    p "USER NAME IS: " + session[:firstname] + " " + session[:lastname]
 		p "USER IS A: "+session[:access_id]
 		redirect_to :action => 'main'
-	  else
-		redirect_to :action => 'login'
-	  end
+	  #else
+		#redirect_to :action => 'login'
+	 # end
   end
   
   def main
