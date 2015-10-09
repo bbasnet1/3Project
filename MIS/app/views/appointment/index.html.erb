@@ -3,7 +3,6 @@
 <table>
     <thead>
 		<th>ID</th>
-        <th>Patient</th>
         <th>Doctor</th>
 		<th>Date</th>
     </thead>
@@ -11,7 +10,6 @@
 <% @appointments.each do |appointment| %>
     <tr>
 		<td><%= appointment.id %></td>
-        <td><%= appointment.patient_id %></td>
         <td><%= appointment.doctor_id %></td>
         <td><%= appointment.date_time %></td>
     </tr>

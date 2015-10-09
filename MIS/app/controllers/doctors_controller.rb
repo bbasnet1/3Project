@@ -1,14 +1,10 @@
 class DoctorsController < ApplicationController
-  def new
-  end
-  
-  def show
-    @doctor = Doctor.find(params[:id])
-  end
-  
   def index
+  	#get liust of all doctors in the Doctors table:
 	@doctors = Doctor.all
+	#Only show Edit and Delete options if the current user is an admin:
 	@valid = filter_action(["ADMIN"])
+	#get URL to current user's main page:
 	@main_route = main_route()
   end
   
@@ -28,7 +24,7 @@ class DoctorsController < ApplicationController
 		  session[:user_id] = @docUser[:id] #Store user ID for the current user during this session
 		  p "USER NAME IS:" + session[:firstname] + " "+ session[:lastname]
 		  p "USER IS A: " + session[:access_id]
-		  redirect_to :action => 'main'
+		  redirect_to :action => 'main' #call main action of this controller to go to the doctor's main page
 	  end
   end
   
@@ -42,8 +38,9 @@ class DoctorsController < ApplicationController
   end
   
   def register_submit
+  	#Create a new doctor entry in the Doctor table with the parameters entered in the register view: 
 	@doctor = Doctor.create(:name_first => params[:first_name], :name_last => params[:last_name], :specialty => params[:specialty])
-	redirect_to :action => 'index'
+	redirect_to :action => 'index'#go back to the index of dcotors
   end
 
   #edit and edit_submit expect a parameter "id" that contains the id of the doctor to edit:
@@ -76,14 +73,16 @@ class DoctorsController < ApplicationController
   end
   
   def delete
+  	#only admins can delete doctors
   	if filter_action(["ADMIN"]) == true
 		Doctor.destroy(params[:id])
 		p "DELETED"
 	end
-	redirect_to :action => 'index'
+	redirect_to :action => 'index' #go back to doctor index
   end
   
   def logout
+  	#set all session variables to nil o logout
 	session[:access_id] = nil
 	session[:firstname] = nil
 	session[:lastname] = nil

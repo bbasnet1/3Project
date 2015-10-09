@@ -1,10 +1,8 @@
 <h1>Appointment#create</h1>
 <p>Find me in app/views/appointment/create.html.erb</p>
 <%= form_tag(:action => 'create_submit') do %>
-<% if @patient_field == true %>
-<p>Patient:<%= collection_select("", :patient_id, Patient.all, :id, :name_last) %></p>
-<% end %>
 <p>Doctor:<%= collection_select("", :doctor_id, Doctor.all, :id, :name_last) %></p>
 <p>Date and Time:<%= datetime_select(:datetime, "") %></p>
+<%= :patient_id => params[:id] %>
 <%= submit_tag("Create")%>
 <% end %>

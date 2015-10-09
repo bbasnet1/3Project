@@ -1,8 +1,8 @@
 <h1>Doctors#register</h1>
 <p>Find me in app/views/doctors/register.html.erb</p>
 <%= form_tag(:action => 'register_submit') do %>
-<p>First Name:</br><%= text_field_tag(:first_name) %></p>
-<p>Last Name:</br><%= text_field_tag(:last_name) %></p>
-<p>Specialty:</br><%= text_field_tag(:specialty) %></p>
+<p>First Name:</br><%= text_field_tag(:first_name, nil , :required => true) %></p>
+<p>Last Name:</br><%= text_field_tag(:last_name, nil, :required => true) %></p>
+<p>Specialty:</br><%= text_field_tag(:specialty, nil, :required => true) %></p>
 <%= submit_tag("Register")%>
 <% end %>

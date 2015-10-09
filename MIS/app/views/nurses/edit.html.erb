@@ -1,7 +1,7 @@
 <h1>nurses#edit</h1>
 <p>Find me in app/views/nurses/edit.html.erb</p>
 <%= form_tag(:action => 'edit_submit', :id => @editNurse[:id]) do %>
-<p>First Name:</br><%= text_field_tag :first_name, @editNurse[:name_first] %></p>
-<p>Last Name:</br><%= text_field_tag :last_name, @editNurse[:name_last] %></p>
+<p>First Name:</br><%= text_field_tag(:first_name, @editNurse[:name_first], :required => true) %></p>
+<p>Last Name:</br><%= text_field_tag(:last_name, @editNurse[:name_last], :required => true) %></p>
 <%= submit_tag("Save Changes")%>
 <% end %>

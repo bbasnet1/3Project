@@ -1,14 +1,16 @@
 <h1>Patients#register</h1>
 <p>Find me in app/views/patients/register.html.erb</p>
 <%= form_tag(:action => 'register_submit') do %>
-<p>First Name:</br><%= text_field_tag(:first_name) %></p>
-<p>Last Name:</br><%= text_field_tag(:last_name) %></p>
-<p>Gender:</br><%= text_field_tag(:gender) %></p>
-<p>Social Security Number:</br><%= text_field_tag(:ssn) %></p>
-<p>Address:</br><%= text_field_tag(:address) %></p>
-<p>Phone:</br><%= telephone_field("",:phone) %></p>
-<p>Date of Birth:</br><%= date_field("", :dob) %></p>
-<p>Weight:</br><%= number_field("",:weight, step: 0.01) %></p>
-<p>Height:</br><%= number_field("",:height, step: 0.01) %></p>
+<p>First Name:</br><%= text_field_tag(:first_name, nil, :required => true) %></p>
+<p>Last Name:</br><%= text_field_tag(:last_name, nil, :required => true) %></p>
+<p>Gender:</p>
+<p><%= radio_button_tag(:gender, 'Male', true) %>Male</p>
+<p><%= radio_button_tag(:gender, 'Female') %>Female</p>
+<p>Social Security Number:</br><%= text_field_tag(:ssn, nil, :maxlength => 9, :required => true) %></p>
+<p>Address:</br><%= text_field_tag(:address, nil, :required => true) %></p>
+<p>Phone:</br><%= telephone_field("",:phone, :required =>true) %></p>
+<p>Date of Birth:</br><%= date_field("", :dob, :required => true, max: Date.today) %></p>
+<p>Weight:</br><%= number_field("",:weight, :required => true, step: 0.01) %></p>
+<p>Height:</br><%= number_field("",:height, :required => true, step: 0.01) %></p>
 <%= submit_tag("Register")%>
 <% end %>
