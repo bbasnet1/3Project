@@ -1,6 +1,4 @@
 class HspstaffsController < ApplicationController
-  def new
-  end
   def login
   p "HSP_STAFF_LOGIN"
   end
@@ -69,7 +67,8 @@ class HspstaffsController < ApplicationController
   end
   
   def delete
-    if filter_action(["ADMIN"]) == true
+    #only admins can delete HSP staff
+  if filter_action(["ADMIN"]) == true
     Hspstaff.destroy(params[:id])
     p "DELETED"
   end

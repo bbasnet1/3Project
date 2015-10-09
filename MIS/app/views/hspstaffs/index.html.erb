@@ -1,6 +1,6 @@
 <h1>Hspstaffs#index</h1>
 <p>Find me in app/views/hspstaffs/index.html.erb</p>
-<table>
+<table rules = "all">
     <thead>
 		<th>ID</th>
         <th>First Name</th>
@@ -9,7 +9,7 @@
     <tbody>
 <% @hspstaffs.each do |hspstaff| %>
     <tr>
-		<td><%= hspstaff.id %></td>
+		<td><%= hspstaff.name_first[0] + hspstaff.name_last[0] + hspstaff.id.to_s %></td>
         <td><%= hspstaff.name_first %></td>
         <td><%= hspstaff.name_last%></td>
         <% if @valid == true %>
@@ -20,7 +20,9 @@
 <% end %>
     </tbody>
 </table>
+<br>
 <% if @valid == true %>
 <a href="/hspstaffs/register">Add HSP Staff</a>
 <% end %>
-<a href= "<%= @main_route %>">Back</a>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

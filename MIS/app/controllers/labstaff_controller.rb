@@ -1,6 +1,4 @@
 class LabstaffController < ApplicationController
-  def new
-  end
   
   def login
 	p "LABSTAFF LOGIN"
@@ -70,6 +68,7 @@ class LabstaffController < ApplicationController
   end
   
   def delete
+  	#Only admins can delete Lab staff
   	if filter_action(["ADMIN"]) == true
 		Labstaff.destroy(params[:id])
 		p "DELETED"

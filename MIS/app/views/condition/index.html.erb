@@ -1,2 +1,23 @@
-<h1>Condition#index</h1>
+<h1>Condition#index: <%= @headertext %></h1>
 <p>Find me in app/views/condition/index.html.erb</p>
+<table rules = "all">
+    <thead>
+        <th>Condition</th>
+        <th></th>
+    </thead>
+    <tbody>
+<% @conditions.each do |condition| %>
+    <tr>
+        <% if @allowEdit == true %>
+		<td><%= link_to condition.condition, {:controller => "condition", :action => "edit", :condition_id => condition.id} %></td>
+        <% else %>
+        <td><%= condition.condition %></td>
+        <% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<br>
+<%= link_to "Add Condition", {:controller => "condition", :action => "create", :patient_id => params[:id]} %>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

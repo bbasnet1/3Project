@@ -1,6 +1,6 @@
 <h1>Admin#pharmacist_index</h1>
 <p>Find me in app/views/admin/pharmacist_index.html.erb</p>
-<table>
+<table rules = "all">
     <thead>
 		<th>ID</th>
         <th>First Name</th>
@@ -9,7 +9,7 @@
     <tbody>
 <% @pharmacists.each do |pharmacist| %>
     <tr>
-		<td><%= pharmacist.id %></td>
+		<td><%= pharmacist.name_first[0] + pharmacist.name_last[0] + pharmacist.id.to_s %></td>
         <td><%= pharmacist.name_first %></td>
         <td><%= pharmacist.name_last%></td>
         <% if @valid == true %>
@@ -20,7 +20,9 @@
 <% end %>
     </tbody>
 </table>
+<br>
 <% if @valid == true %>
 <a href="/pharmacist/register">Add Pharmacist</a>
 <% end %>
-<a href= "<%= @main_route %>">Back</a>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

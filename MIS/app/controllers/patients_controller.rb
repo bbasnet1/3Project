@@ -1,6 +1,4 @@
 class PatientsController < ApplicationController
-  def new
-  end
   def login
     p "PATIENT_LOGIN"
   end
@@ -22,7 +20,8 @@ class PatientsController < ApplicationController
   
   def index
 	@patients = Patient.all
-  	@valid = filter_action(["ADMIN", "HSPSTAFF"]) #Allow admin AND HSP staff to edit Patient table
+  	@valid = filter_action(["ADMIN", "HSPSTAFF"]) #Allow admin AND HSP staff to add, delete, edit Patient info
+  	@showConditions = filter_action(["ADMIN", "DOCTOR", "NURSE", "PATIENT"]) #HSP staff cannot view/edit conditions of patients
 	@main_route = main_route()
   end
   
@@ -68,6 +67,7 @@ class PatientsController < ApplicationController
   end
   
   def delete
+  	#Only admins OR HSP staff can delete patients
 	if filter_action(["ADMIN", "HSPSTAFF"]) == true
 		Patient.destroy(params[:id])
 		p "DELETED"
