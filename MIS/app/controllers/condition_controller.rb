@@ -10,12 +10,12 @@ class ConditionController < ApplicationController
   @allowEdit = filter_action(["ADMIN", "NURSE", "DOCTOR"])
   #get the URL to the current user's main page:
 	@main_route = main_route()
-
   end
 
   def create
-  	#show_doctors_notes is only true if current user is an admin, nurse, or doctor
-  	@show_doctors_notes = filter_action(["ADMIN", "NURSE", "DOCTOR"])
+  	#show_doctors_notes is only true if current user is an admin, nurse, doctor, or patient
+    #Patients can write notes when creating a condition, but cannot edit them afterthe condtion is created
+  	@show_doctors_notes = filter_action(["ADMIN", "NURSE", "DOCTOR", "PATIENT"])
   end
 
   def create_submit#expects the ID of the patient this condition applies to as a parameter
@@ -23,15 +23,6 @@ class ConditionController < ApplicationController
   	@condition = Condition.create(:patient_id => params[:patient_id], :condition => params[:condition], :notes => params[:notes])
 	#Go back to the index view, and pass the ID of the patient whose conditions we want to see:
 	redirect_to :action => 'index', :id => params[:patient_id]
-  end
-
-  def delete#expects the ID of a condition to delete as a parameter
-    #only admins, nurses, doctors, or patients can delete medical conditions 
-    if filter_action(["ADMIN", "NURSE", "DOCTOR", "PATIENT"])
-  	   @patient_id = (Condition.find_by_id(params[:condition_id]))[:patient_id]  #get ID of patient with condition to delete
-  	   Condition.destroy(params[:condition_id])#Delete condition from Condition table
-    end
-  	redirect_to :action => 'index', :id => @patient_id#return to patient's index of conditions
   end
 
   def edit#expects the ID of a condition to edit as a parameter
@@ -45,4 +36,14 @@ class ConditionController < ApplicationController
   	@editCondition.update_attributes(:patient_id => @patient_id, :condition => params[:condition], :notes => params[:notes])
   	redirect_to :action => 'index', :id => @patient_id#return to patient's index of conditions
   end
+
+  def delete#expects the ID of a condition to delete as a parameter
+    #only admins, nurses, or doctors can delete medical conditions 
+    if filter_action(["ADMIN", "NURSE", "DOCTOR"])
+       @patient_id = (Condition.find_by_id(params[:condition_id]))[:patient_id]  #get ID of patient with condition to delete
+       Condition.destroy(params[:condition_id])#Delete condition from Condition table
+    end
+    redirect_to :action => 'index', :id => @patient_id#return to patient's index of conditions
+  end
+
 end
