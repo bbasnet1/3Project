@@ -30,7 +30,7 @@ Github usernames of members:
 Mark - 
 Bishnu - 
 Connor - cgolobic
-Dayton - 
+Dayton - dayton-harris
 Nhashon - 
 Balaji - balaji2591
 Alexander - alexschultzAZ
