@@ -1,8 +1,8 @@
 <h1>Appointment#create</h1>
 <p>Find me in app/views/appointment/create.html.erb</p>
-<%= form_tag(:action => 'create_submit') do %>
-<p>Doctor:<%= collection_select("", :doctor_id, Doctor.all, :id, :name_last) %></p>
-<p>Date and Time:<%= datetime_select(:datetime, "") %></p>
-<%= :patient_id => params[:id] %>
+<%= form_tag(:action => 'create_submit', :patient_id => params[:patient_id]) do %>
+<p>Doctor:<%= collection_select("", :doctor_id, Doctor.all, :id, :fullname_specialty) %></p>
+<p>Date:<%= date_field("", :date, :required => true, min: Date.today) %></p>
+<p>Time:<%= time_select("", :time, :required => true, include_seconds: false, minute_step: 15, ampm: true ) %></p>
 <%= submit_tag("Create")%>
 <% end %>

@@ -13,7 +13,7 @@
         <th>Weight</th>
 		<th>Height</th>
         <% if @showConditions == true %>        
-            <th colspan = "4">Additional Patient Information</th>
+            <th colspan = "5">Additional Patient Information</th>
         <% else %>
             <th colspan = "3">Additional Patient Information</th>
         <% end %>
@@ -37,10 +37,11 @@
 		<td><%= patient.height%></td>
         <% if @showConditions == true %>
             <td><%= link_to "Health Conditions", {:controller => "condition", :action => "index", :id => patient.id} %></td>
+            <td><%= link_to "Lab Work", {:controller => "labwork", :action => "index", :id => patient.id} %></td>
         <% end %>
         <td><%= link_to "Medical History", {:controller => "history", :action => "index", :id => patient.id} %></td>
         <td><%= link_to "Prescriptions", {:controller => "prescription", :action => "index", :id => patient.id} %></td>
-        <td><%= link_to "Appointments", {:controller => "appointment", :action => "index", :id => patient.id} %></td>
+        <td><%= link_to "Visit History", {:controller => "appointment", :action => "index", :id => patient.id} %></td>
 		<% if @valid == true %>
         <td><%= link_to "Delete", {:controller => "patients", :action => "delete", :id => patient.id} %></td>
         <td><%= link_to "Edit", {:controller => "patients", :action => "edit", :id => patient.id} %></td>

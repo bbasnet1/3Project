@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 	return false
   end
   end
-  
+
   def main_route() #returns route to the main page of the current user type (Used for setting the destination of the "Back" links on index pages)
 	if session[:access_id] == "ADMIN"
 		return "/admin/main"

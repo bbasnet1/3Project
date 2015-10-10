@@ -2,10 +2,10 @@
 <p>Find me in app/views/patients/main.html.erb</p>
 <a href="alert">SEND MEDICAL ALERT</a>
 <br>
-<a <%= link_to "Request an Appointment", {:controller => "appointment", :action => "create", :id => session[:user_id]} %></a>
+<a <%= link_to "Request an Appointment", {:controller => "appointment", :action => "create", :patient_id => session[:user_id]} %></a>
 <br>
 <br>
-<a <%= link_to "View Appointments", {:controller => "appointment", :action => "index", :id => session[:user_id]} %></a>
+<a <%= link_to "View Visit History", {:controller => "appointment", :action => "index", :id => session[:user_id]} %></a>
 <br>
 <a <%= link_to "View Health Conditions", {:controller => "condition", :action => "index", :id => session[:user_id]} %></a>
 <br>
