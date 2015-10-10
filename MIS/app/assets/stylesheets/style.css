@@ -1,0 +1,54 @@
+/*
+ * CSE 360 - Group 3
+*/
+
+* {
+    font-family: Arial;
+}
+
+a.visited {
+    color: inherit;
+}
+
+a.btn:visited {
+    color:white;
+}
+
+.col-md-12.page-header {
+    text-align:center;
+}
+
+.login-button {
+    margin:5px;
+}
+
+.entry-content .main-content {
+    text-align:center;
+}
+
+.login-image {
+    max-width:150px;
+    height:auto;
+    margin-left:20px;
+    display:inline-block;
+}
+
+.login-body form {
+    display:inline-block;
+    margin: 20px 0 0 20px;
+}
+
+.login-body .login-content {
+    margin:auto;
+    float:none;
+}
+
+.login-content .btn {
+    min-width:100px;
+    display:block;
+    margin:auto;
+}
+
+a:hover {
+    background-color:inherit;
+}
