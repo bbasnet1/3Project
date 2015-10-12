@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap.min
+
+$(function(){
+    $('.login-content input[type="submit"]').each(function(){
+        $(this).addClass('btn btn-primary');
+    });
+});
