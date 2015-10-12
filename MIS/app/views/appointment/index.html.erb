@@ -20,4 +20,8 @@
     </tbody>
 </table>
 <br>
+<% if @allowNew == true %>
+<%= link_to "Add Appointment", {:controller => "appointment", :action => "create", :patient_id => params[:id]} %>
+<br><br>
+<% end %>
 <a href= "<%= @main_route %>">Main Menu</a>

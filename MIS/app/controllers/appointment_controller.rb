@@ -6,6 +6,7 @@ class AppointmentController < ApplicationController
 	 @appointments = Appointment.where(:patient_id => params[:id]).all
 	 @headertext = @currentPatient[:name_first] + " "+ @currentPatient[:name_last]+"'s Visit History"
 	 @allowDelete = filter_action(["ADMIN"])#only admins can delete appointments from the index view (Patients create new appointments from the main view)
+   @allowNew = filter_action(["ADMIN"])#only admins can add appointmenrs from rhe appointment index
   @main_route = main_route()
   end
   
