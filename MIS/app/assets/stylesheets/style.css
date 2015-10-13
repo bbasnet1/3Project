@@ -1,6 +1,10 @@
 /*
  * CSE 360 - Group 3
 */
+a:hover {
+    background-color:inherit;
+    color: inherit;
+}
 
 * {
     font-family: Arial;
@@ -43,12 +47,67 @@ a.btn:visited {
     float:none;
 }
 
-.login-content .btn {
+.login-content .btn,
+.edit-info .btn {
     min-width:100px;
+    display:block;
+    margin: auto;
+}
+
+.login-content a:hover {
+    background-color:inherit;
+}
+
+.btn.small-width {
+    max-width:180px;
+}
+
+.container .main-buttonview {
+    float:none;
+    margin:auto;
+}
+
+.container .main-buttonview .btn {
+    max-width:300px;
     display:block;
     margin:auto;
 }
 
-a:hover {
-    background-color:inherit;
+ul.conditions-list li {
+    font-size:17px;
+    padding:5px 0;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+ul.conditions-list li a:hover {
+    background-color: inherit;
+    text-decoration:none;
+    color: inherit;
+}
+
+.edit-conditions {
+    max-width:500px;
+}
+
+.edit-conditions textarea {
+    max-height:200px;
+    max-width:450px;
+    width:100%;
+}
+
+.patient-table .last-col {
+    border:none;
+    background-color:#fff;
+    width:1px;
+}
+
+.table-bordered.patient-table {
+    border-right:0;
+    border-bottom:0;
+}
+
+.centered-content {
+    float:none;
+    margin:auto;
 }
