@@ -1,0 +1,2 @@
+module HspstaffsHelper
+end
