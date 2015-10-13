@@ -1,5 +1,14 @@
-<h1>Hspstaffs#main: Welcome, <%= @firstname %> <%= @lastname %></h1>
-<p>Find me in app/views/hspstaffs/main.html.erb</p>
-<a href="/patients/index">View Patients</a>
-<br><br>
-<a href="logout">Log Out</a>
+<div class="container entry-content">
+  <div class="row">
+    <div class="col-md-12 page-header">
+      <h1>Hspstaffs#main: Welcome, <%= @firstname %> <%= @lastname %></h1>
+      <p>Find me in app/views/hspstaffs/main.html.erb</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 main-buttonview">
+      <p><a class="btn btn-primary" href="/patients/index">View Patients</a></p>
+      <p><a class="btn btn-info" href="logout">Log Out</a></p>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
       <%= link_to( image_tag("user-silhouette.png", :class=>"login-image", :alt=>"user silhouette")) %>
       <%= form_tag(:action => 'login_submit') do %>
           <p>USERNAME:</br><%= text_field_tag(:username) %></p>
-          <%= submit_tag("Log In")%>
+          <%= submit_tag("Log In", :class=>'btn btn-primary')%>
       <% end %><br>
     </div>
   </div>
