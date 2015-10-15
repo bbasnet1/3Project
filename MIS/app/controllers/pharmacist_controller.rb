@@ -1,7 +1,4 @@
 class PharmacistController < ApplicationController
-  def new
-  end
-  
   def login
 	p "PHARMACIST LOGIN"
   end
@@ -70,6 +67,7 @@ class PharmacistController < ApplicationController
   end
   
   def delete
+  	#only admins can delete pharmacists
   	if filter_action(["ADMIN"]) == true
 		Pharmacist.destroy(params[:id])
 		p "DELETED"

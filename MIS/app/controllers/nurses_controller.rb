@@ -1,7 +1,4 @@
 class NursesController < ApplicationController
-  def new
-  end
-  
   def login
   p "NURSE_LOGIN"
   end
@@ -23,7 +20,9 @@ class NursesController < ApplicationController
   end
   
   def index
+  	#get all nurses in the Nurse table
 	@nurses = Nurse.all
+	#only admins can view/edit/add nurses
   	@valid = filter_action(["ADMIN"])
 	@main_route = main_route()
   end
@@ -71,6 +70,7 @@ class NursesController < ApplicationController
   end
   
   def delete
+  	#only admins can delete nurses
   	if filter_action(["ADMIN"]) == true
 		Nurse.destroy(params[:id])
 		p "DELETED"

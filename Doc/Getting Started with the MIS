@@ -3,7 +3,14 @@ The Medical Information System (MIS) is a Ruby on Rails web app that provides ac
 
 
 2. RUNNING THE SERVER
-First, be sure to have Ruby, Rails, and SQLite installed.  To test the MIS locally, a server running the web app needs to be started locally.  This is done by opening a terminal/command prompt in the "MIS" directory.  Then, run the command:
+First, be sure to have Ruby, Rails, and SQLite installed.  
+
+Before running for the first time, you need to "migrate" the database (this creates the database on your machine).  To do this, open a terminal/command prompt in the "MIS" directory and run the command:
+
+rake db:migrate
+ 
+
+To test the MIS locally, a server running the web app needs to be started locally.  This is done by opening a terminal/command prompt in the "MIS" directory.  Then, run the command:
 
 rails server
 
