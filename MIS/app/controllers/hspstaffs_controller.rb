@@ -82,4 +82,11 @@ class HspstaffsController < ApplicationController
 	session[:user_id] = nil
 	redirect_to :controller => 'welcome', :action => 'main'
   end
+
+
+  def generate
+    
+  end
+
+
 end

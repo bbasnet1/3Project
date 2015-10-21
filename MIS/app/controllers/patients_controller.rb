@@ -28,6 +28,18 @@ class PatientsController < ApplicationController
   def main
   	@firstname = session[:firstname]
 	@lastname = session[:lastname]
+	@sendAlertLink = true
+	if Condition.where("patient_id = ?", session[:user_id]).length == 0
+		@sendAlertLink = false
+	end
+  end
+
+  def send_alert
+  	@main_route = main_route()
+  	@existingAlert = Alert.where("patient_id = ?", session[:user_id])
+  	if @existingAlert.length == 0 #no existng alerts, need to make a new one
+      @newAlert = Alert.create(:patient_id => session[:user_id])
+    end
   end
   
   def register
@@ -70,6 +82,13 @@ class PatientsController < ApplicationController
   	#Only admins OR HSP staff can delete patients
 	if filter_action(["ADMIN", "HSPSTAFF"]) == true
 		Patient.destroy(params[:id])
+		#destroy all data associated with deleted patient
+		Appointment.destroy_all(:patient_id => params[:id])
+		Condition.destroy_all(:patient_id => params[:id])
+		History.destroy_all(:patient_id => params[:id])
+		Labwork.destroy_all(:patient_id => params[:id])
+		Prescription.destroy_all(:patient_id => params[:id])
+
 		p "DELETED"
 	end
 	redirect_to :action => 'index'

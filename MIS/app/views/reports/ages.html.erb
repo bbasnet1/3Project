@@ -1,0 +1,23 @@
+<h1>Report: Ages of Registered Patients</h1>
+<table rules = "all">
+    <thead>
+		<th>Age Range (Years)</th>
+        <th>Number of Patients</th>
+        <th>Percentage of Total Patients</th>
+    </thead>
+    <tbody>
+<% for i in 0..@counts.length-1 do %>
+    <tr>
+		<td><%= (i * 10).to_s + " - " + ((i * 10)+9).to_s %></td>
+        <td><%= @counts[i] %></td>
+        <td><%= number_to_percentage((@counts[i].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+<% end %>
+<tr>
+	<td>TOTAL:</td>
+	<td><%= @total %></td>
+</tr>
+    </tbody>
+</table>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

@@ -27,6 +27,7 @@ class PharmacistController < ApplicationController
   def main
 	@firstname = session[:firstname]
 	@lastname = session[:lastname]
+	@patients = Patient.all
   end
   
   def register
@@ -50,7 +51,6 @@ class PharmacistController < ApplicationController
 	#Return to the patient index:
 	redirect_to :action => 'index'  
   end
-
   
   def authenticate(username="")
 	@loginPharmacist = Pharmacist.find_by_id(username[2..-1])

@@ -22,6 +22,7 @@ class LabstaffController < ApplicationController
   def main
     @firstname = session[:firstname]
 	@lastname = session[:lastname]
+	@patients = Patient.all
   end
   
   def index
