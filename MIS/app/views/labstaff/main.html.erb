@@ -1,6 +1,22 @@
 <h1>Labstaff#main: Welcome, <%= @firstname %> <%= @lastname %></h1>
 <p>Find me in app/views/labstaff/main.html.erb</p>
-<a href="/labwork/index">View Labwork Requests</a>
+<br>
+<p>Click a patient name to view lab work information</p>
+<br>
+<table rules = "all">
+    <thead>
+		<th>Patient Name</th>
+		<th>Reports Pending Completion</th>
+    </thead>
+    <tbody>
+<% @patients.each do |patient| %>
+    <tr>
+		<td><%= link_to patient.name_last + ", " + patient.name_first, {:controller => "labwork", :action => "index", :id => patient.id} %></td>
+		<td><%= Labwork.where("patient_id = ? AND complete = ?", patient.id, false).all.length %></td>
+    </tr>
+<% end %>
+    </tbody>
+</table>
 <br><br>
 <a href="logout">Log Out</a>
 

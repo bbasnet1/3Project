@@ -31,6 +31,7 @@ class DoctorsController < ApplicationController
   def main
 	@firstname = session[:firstname]
 	@lastname = session[:lastname]
+	@numAlerts = Alert.all.length
   end
   
   def register
@@ -71,6 +72,13 @@ class DoctorsController < ApplicationController
 		end
 	end
   end
+
+
+def alerts
+	@alerts = Alert.all
+	@main_route = main_route()
+end
+
   
   def delete
   	#only admins can delete doctors

@@ -1,6 +1,20 @@
 <h1>Pharmacist#main: Welcome, <%= @firstname %> <%= @lastname %></h1>
 <p>Find me in app/views/pharmacist/main.html.erb</p>
-<a href="">Search for Prescription:</a>
+<br>
+<p>Click a patient name to view prescription information</p>
+<br>
+<table rules = "all">
+    <thead>
+		<th>Patient Name</th>
+    </thead>
+    <tbody>
+<% @patients.each do |patient| %>
+    <tr>
+		<td><%= link_to patient.name_last + ", " + patient.name_first, {:controller => "prescription", :action => "index", :id => patient.id} %></td>
+    </tr>
+<% end %>
+    </tbody>
+</table>
 <br><br>
 <a href="logout">Log Out</a>
 

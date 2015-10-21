@@ -1,2 +1,35 @@
-<h1>Labwork#index</h1>
+<h1>Labwork#index: <%= @headertext %></h1>
 <p>Find me in app/views/labwork/index.html.erb</p>
+<table rules = "all">
+    <thead>
+        <th>ID</th>
+    	<th>Description</th>
+    	<th></th>
+        <th></th>
+    </thead>
+    <tbody>
+<% @labworks.each do |labwork| %>
+    <tr>
+    	<td><%= labwork.id %></td>
+    	<td><%= labwork.description %></td>
+        <% if labwork.complete == true %>
+    	<td><%= link_to "Download Report", {:controller => "labwork", :action => "download", :labwork_file => labwork.data} %></td>
+        <% else %>
+            <td></td>
+        <% end %>
+        <% if @allowEdit == true %>
+		<td><%= link_to "Edit", {:controller => "labwork", :action => "edit", :labwork_id => labwork.id} %></td>
+        <% end %>
+        <% if @allowDelete == true %>
+        <td><%= link_to "Delete", {:controller => "labwork", :action => "delete", :labwork_id => labwork.id} %></td>
+        <% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<% if @allowCreate == true %>
+<br>
+<%= link_to "Request Labwork", {:controller => "labwork", :action => "create", :patient_id => params[:id]} %>
+<% end %>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

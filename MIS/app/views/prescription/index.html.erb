@@ -1,2 +1,28 @@
-<h1>Prescription#index</h1>
+<h1>Prescription#index: <%= @headertext %></h1>
 <p>Find me in app/views/prescription/index.html.erb</p>
+<table rules = "all">
+    <thead>
+        <th>Medication</th>
+        <th>Dosage (mg)</th>
+        <th></th>
+    </thead>
+    <tbody>
+<% @prescriptions.each do |prescription| %>
+    <tr>
+
+    	<td><%= prescription.name %></td>
+    	<td><%= prescription.dosage %></td>
+        <% if @allowEdit == true %>
+		<td><%= link_to "Edit", {:controller => "prescription", :action => "edit", :prescription_id => prescription.id} %></td>
+		<td><%= link_to "Delete", {:controller => "prescription", :action => "delete", :prescription_id => prescription.id} %></td>
+		<% end %>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<% if @allowEdit == true %>
+<br>
+<%= link_to "Add Prescription", {:controller => "prescription", :action => "create", :patient_id => params[:id]} %>
+<% end %>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

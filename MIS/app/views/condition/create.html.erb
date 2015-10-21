@@ -1,7 +1,7 @@
 <h1>Condition#create</h1>
 <p>Find me in app/views/condition/create.html.erb</p>
 <%= form_tag(:action => 'create_submit', :patient_id => params[:patient_id]) do %>
-<p>Condition:</br><%= text_field_tag(:condition, nil, :required => true) %></p>
+<p>Condition:<%= collection_select("", :condition, @symptoms, :to_s, :to_s) %></p>
 <% if @show_doctors_notes == true %>
 <p>Notes: </br><%= text_area("", :notes, cols: 60, rows: 40) %><p>
 <% end %>

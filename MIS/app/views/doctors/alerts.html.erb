@@ -1,0 +1,34 @@
+<h1>Doctors#alerts</h1>
+<p>Find me in app/views/doctors/alerts.html.erb</p>
+<table rules = "all">
+    <thead>
+		<th>Alert Created</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+		<th>Symptoms Requiring Attention</th>
+    </thead>
+    <tbody>
+<% @alerts.each do |alert| %>
+    <tr>
+        <% @alertPatient = Patient.find_by_id(alert.patient_id) %>
+		<td><%= alert.created_at %></td>
+        <td><%= @alertPatient.name_first %></td>
+        <td><%= @alertPatient.name_last%></td>
+        <% @symptoms = Condition.where("created_at >= ? AND patient_id = ?", 7.days.ago, alert.patient_id) %>
+		<td>
+            <table rules = "all">
+                <tbody>
+                <% @symptoms.each do |symptom| %>
+                <tr>
+                     <td><%= link_to symptom.condition, {:controller => "condition", :action => "edit", :condition_id => symptom.id} %></td>
+                </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </td>
+    </tr>
+<% end %>
+    </tbody>
+</table>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>
