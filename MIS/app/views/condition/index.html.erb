@@ -3,6 +3,15 @@
     <div class="col-md-12 page-header">
       <h1>Condition#index: <%= @headertext %></h1>
       <p>Find me in app/views/condition/index.html.erb</p>
+      <br>
+      <% if @showGroup == true %>
+      <a>
+      <%= form_tag(:controller => 'patients', :action => 'update_group', :patient_id => params[:id]) do %>
+      Patient Group: <%= collection_select("", :selGroup, @groups, :to_s, :to_s, :selected => @currentPatient[:group]) %>
+      <%= submit_tag "Save Changes", class: "btn btn-primary"%>
+      <% end %>
+    </a>
+    <% end %>
     </div>
   </div>
   <h2>Condition</h2>

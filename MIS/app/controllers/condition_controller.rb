@@ -8,6 +8,16 @@ class ConditionController < ApplicationController
         "Numbness",
         "Sore throat",
         "Body aches",
+        "Nausea",
+        "Difficulty breathing",
+        "High blood pressure",
+        "Abdominal pain",
+        "Fatigue",
+        "Constipation",
+        "Vision problems",
+        "Dizziness",
+        "Hearing problems",
+        "Frequent urination",
         "Other"]
 
     @@severities = 
@@ -17,7 +27,26 @@ class ConditionController < ApplicationController
       4,
       2,
       2,
+      3,
+      5,
+      4,
+      3,
+      2,
+      2,
+      3,
+      3,
+      3,
+      4,
       1]
+
+      @@groupConditions = 
+      ["General",
+        "Intensive Care",
+        "Recovery",
+        "Surgery",
+        "Cancer Treatment",
+      ]
+
 
   def calculate_severity(patientID = "")
     @recentConditions = Condition.where("created_at >= ? AND patient_id = ?", 7.days.ago, patientID)
@@ -34,6 +63,8 @@ class ConditionController < ApplicationController
   end
 
   def index
+    @groups = @@groupConditions
+    @showGroup = filter_action(["ADMIN", "DOCTOR", "NURSE"])
   	#Get the patient with the ID sent to this action as a parameter from the Patient table.  Store the retrieved patient in an instance variable:
   	@currentPatient = Patient.find_by_id(params[:id])
   	#Get all conditions from the Condition database that have a patient_id matching the ID sent to this action as a parameter.  Store the array of returned conditions in an instance variable:
