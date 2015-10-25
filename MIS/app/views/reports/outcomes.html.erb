@@ -1,0 +1,32 @@
+<h1>Report: Health Outcomes and Coniditions</h1>
+<table rules = "all">
+    <thead>
+		<th></th>
+        <th>Number of Patients</th>
+        <th>Percentage of Total Patients</th>
+    </thead>
+    <tbody>
+    <tr>
+		<td>Healthy Patients (No Health Issues Reported)</td>
+        <td><%= @counts[0] %></td>
+        <td><%= number_to_percentage((@counts[0].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Patients With Health Issues</td>
+        <td><%= @counts[1] %></td>
+        <td><%= number_to_percentage((@counts[1].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Patients With a Reported Health Issue in the Last Month</td>
+        <td><%= @counts[2] %></td>
+        <td><%= number_to_percentage((@counts[2].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Patients With a Reported Health Issue in the Last 6 Months</td>
+        <td><%= @counts[3] %></td>
+        <td><%= number_to_percentage((@counts[3].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>

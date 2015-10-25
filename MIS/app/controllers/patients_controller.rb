@@ -1,4 +1,13 @@
 class PatientsController < ApplicationController
+
+	    @@raceList = 
+      ["White/Caucasian", 
+        "Black/African American", 
+        "Asian",
+        "Hispanic",
+        "Native American",
+        "Other"]
+
   def login
     p "PATIENT_LOGIN"
   end
@@ -25,6 +34,12 @@ class PatientsController < ApplicationController
 	@main_route = main_route()
   end
   
+  def update_group
+  	@editPatient = Patient.find_by_id(params[:patient_id])
+  	@editPatient.update_attributes(:group => params[:selGroup])
+  	redirect_to :controller => 'condition', :action => 'index', :id => params[:patient_id]
+  end
+
   def main
   	@firstname = session[:firstname]
 	@lastname = session[:lastname]
@@ -43,23 +58,24 @@ class PatientsController < ApplicationController
   end
   
   def register
-  
+  	@races = @@raceList
   end
   
   def register_submit
-	@patient = Patient.create(:name_first => params[:first_name], :name_last => params[:last_name], :gender => params[:gender], :ssn => params[:ssn], :address => params[:address], :phone => params[:phone], :dob => params[:dob], :weight => params[:weight], :height => params[:height] )
+	@patient = Patient.create(:name_first => params[:first_name], :name_last => params[:last_name], :gender => params[:gender], :ssn => params[:ssn], :address => params[:address], :phone => params[:phone], :dob => params[:dob], :weight => params[:weight], :height => params[:height], :ethnicity => params[:ethnicity], :group => "General" )
 	redirect_to :action => 'index'
   end
 
   #edit and edit_submit take a parameter that is the id of the patient to edit and save changes for
   def edit
+  	@races = @@raceList
   	@editPatient = Patient.find_by_id(params[:id])
   end
 
   def edit_submit
   	@editPatient = Patient.find_by_id(params[:id])
   	#Write changes to selected patient back to the database:
-  	@editPatient.update_attributes(:name_first => params[:first_name], :name_last => params[:last_name], :gender => params[:gender], :ssn => params[:ssn], :address => params[:address], :phone => params[:phone], :dob => params[:dob], :weight => params[:weight], :height => params[:height] )
+  	@editPatient.update_attributes(:name_first => params[:first_name], :name_last => params[:last_name], :gender => params[:gender], :ssn => params[:ssn], :address => params[:address], :phone => params[:phone], :dob => params[:dob], :weight => params[:weight], :height => params[:height], :ethnicity => params[:ethnicity] )
 	#Return to the patient index:
 	redirect_to :action => 'index'  
   end

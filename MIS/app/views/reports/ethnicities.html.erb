@@ -1,0 +1,46 @@
+<h1>Report: Ethnicities/Races of Registered Patients</h1>
+<table rules = "all">
+    <thead>
+		<th>Ethnicity/Race</th>
+        <th>Number of Patients</th>
+        <th>Percentage of Total Patients</th>
+    </thead>
+    <tbody>
+    <tr>
+		<td>White/Caucasian</td>
+        <td><%= @counts[0] %></td>
+        <td><%= number_to_percentage((@counts[0].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Black/African American</td>
+        <td><%= @counts[1] %></td>
+        <td><%= number_to_percentage((@counts[1].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Asian</td>
+        <td><%= @counts[2] %></td>
+        <td><%= number_to_percentage((@counts[2].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Hispanic</td>
+        <td><%= @counts[3] %></td>
+        <td><%= number_to_percentage((@counts[3].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Native American</td>
+        <td><%= @counts[4] %></td>
+        <td><%= number_to_percentage((@counts[4].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Other</td>
+        <td><%= @counts[5] %></td>
+        <td><%= number_to_percentage((@counts[5].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+    	<td>TOTAL:</td>
+    	<td><%= @total %></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>
