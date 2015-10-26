@@ -43,6 +43,7 @@ class PatientsController < ApplicationController
   def main
   	@firstname = session[:firstname]
 	@lastname = session[:lastname]
+  @access_id = session[:access_id]
 	@sendAlertLink = true
 	if Condition.where("patient_id = ?", session[:user_id]).length == 0
 		@sendAlertLink = false
