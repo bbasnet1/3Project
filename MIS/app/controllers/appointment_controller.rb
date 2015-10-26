@@ -25,7 +25,7 @@ class AppointmentController < ApplicationController
   end
 
   def delete
-    if filter_action(["ADMIN"])
+    if filter_action(["ADMIN", "HSPSTAFF"])
        @patient_id = (Appointment.find_by_id(params[:appointment_id]))[:patient_id]  #get ID of patient with appointment to delete
        Appointment.destroy(params[:appointment_id])#Delete appointment from appointment table
     end

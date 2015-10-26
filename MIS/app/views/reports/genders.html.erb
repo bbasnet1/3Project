@@ -1,0 +1,26 @@
+<h1>Report: Genders of Registered Patients</h1>
+<table rules = "all">
+    <thead>
+		<th>Gender</th>
+        <th>Number of Patients</th>
+        <th>Percentage of Total Patients</th>
+    </thead>
+    <tbody>
+    <tr>
+		<td>Male</td>
+        <td><%= @counts[0] %></td>
+        <td><%= number_to_percentage((@counts[0].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+        <td>Female</td>
+        <td><%= @counts[1] %></td>
+        <td><%= number_to_percentage((@counts[1].to_f/@total.to_f)*100, precision: 2) %></td>
+    </tr>
+    <tr>
+    	<td>TOTAL:</td>
+    	<td><%= @total %></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<a href= "<%= @main_route %>">Main Menu</a>
